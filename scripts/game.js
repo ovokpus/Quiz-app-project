@@ -1,13 +1,13 @@
 // Create Constants for Question, Choices, Scores and Game
-const QUESTION = document.querySelector("#question");
-const CHOICES = Array.from(document.querySelectorAll(".choice-text"));// For various choice options
-const SCORETXT = document.querySelector("#score");
-const GAME = document.querySelector("#game");
+const question = document.querySelector("#question");
+const choices = Array.from(document.querySelectorAll(".choice-text"));// For various choice options
+const scoreTxt = document.querySelector("#score");
+const game = document.querySelector("#game");
 
 // Add constants for Progress Bar and Loader
-const PROGRESS = document.querySelector("#progress-text");
-const PROGRESSBARFULL = document.querySelector("#progress-bar-full");
-const LOADER = document.querySelector("#loader");
+const progress = document.querySelector("#progress-text");
+const progressBarFull = document.querySelector("#progress-bar-full");
+const loader = document.querySelector("#loader");
 
 
 let currentQuestion = {};
@@ -24,23 +24,23 @@ fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=
     })
     .then((loadedQuestions) => {
         questions = loadedQuestions.results.map((loadedQuestion) => {
-            const FORMATTEDQUESTIONS = {
+            const formattedQuestions = {
                 question: loadedQuestion.question,
             };
 
-            const ANSWERCHOICES = [...loadedQuestion.incorrect_answers];
-            FORMATTEDQUESTIONS.answer = Math.floor(Math.random() * 3) + 1;
-            ANSWERCHOICES.splice(
-                FORMATTEDQUESTIONS.answer - 1,
+            const answerChoices = [...loadedQuestion.incorrect_answers];
+            formattedQuestions.answer = Math.floor(Math.random() * 3) + 1;
+            answerChoices.splice(
+                formattedQuestions.answer - 1,
                 0,
                 loadedQuestion.correct_answer
             );
 
-            ANSWERCHOICES.forEach((choice, index) => {
-                FORMATTEDQUESTIONS['choice' + (index + 1)] = choice;
+            answerChoices.forEach((choice, index) => {
+                formattedQuestions['choice' + (index + 1)] = choice;
             });
 
-            return FORMATTEDQUESTIONS;
+            return formattedQuestions;
         });
         
         startGame();
@@ -50,8 +50,8 @@ fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=
     });
 
 //Set Bonus Scores for Correct Question and Maximum number of Questions in a Quiz Session
-const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 5;
+const correctBonus = 10;
+const maxQuestions = 5;
 
  startGame = () => {
     questionCounter = 0;
@@ -63,30 +63,30 @@ const MAX_QUESTIONS = 5;
 };
 
 getNewQuestion = () => {
-    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+    if (availableQuestions.length === 0 || questionCounter >= maxQuestions) {
         localStorage.setItem('mostRecentScore', score);
         //go to the end page
         return window.location.assign("end.html");
     }
     questionCounter++;
-    PROGRESS.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
+    progress.innerText = `Question ${questionCounter}/${maxQuestions}`;
     // Update the Progress bar
-    PROGRESSBARFULL.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+    progressBarFull.style.width = `${(questionCounter / maxQuestions) * 100}%`;
 
-    const QUESTIONINDEX = Math.floor(Math.random() * availableQuestions.length);
-    currentQuestion = availableQuestions[QUESTIONINDEX];
-    QUESTION.innerText = currentQuestion.question;
+    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    currentQuestion = availableQuestions[questionIndex];
+    question.innerText = currentQuestion.question;
 
-    CHOICES.forEach(choice => {
-        const NUMBER = choice.dataset["number"];
-        choice.innerText = currentQuestion["choice" + NUMBER];
+    choices.forEach(choice => {
+        const number = choice.dataset["number"];
+        choice.innerText = currentQuestion["choice" + number];
     });
 
-    availableQuestions.splice(QUESTIONINDEX, 1);
+    availableQuestions.splice(questionIndex, 1);
     acceptingAnswers = true;
 };
 
-CHOICES.forEach(choice => {
+choices.forEach(choice => {
     choice.addEventListener("click", e => {
         if (!acceptingAnswers) return;
 
@@ -98,7 +98,7 @@ CHOICES.forEach(choice => {
             selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
         if (CLASSTOAPPLY === "correct") {
-            incrementScore(CORRECT_BONUS);
+            incrementScore(correctBonus);
         }
 
         selectedChoice.parentElement.classList.add(CLASSTOAPPLY);
@@ -111,6 +111,6 @@ CHOICES.forEach(choice => {
 
 incrementScore = num => {
     score += num;
-    SCORETXT.innerText = score;
+    scoreTxt.innerText = score;
 };
 

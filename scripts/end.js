@@ -1,10 +1,10 @@
-const username = document.getElementById('username');
-const saveScoreBtn = document.getElementById("save-score-btn");
-const finalScore = document.getElementById('final-score');
+const userName = document.querySelector('#username');
+const saveScoreBtn = document.querySelector("#save-score-btn");
+const finalScore = document.querySelector('#final-score');
 const mostRecentScore = localStorage.getItem("mostRecentScore");
 
-const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-console.log(highScores);
+const hiScores = JSON.parse(localStorage.getItem("hiScores")) || [];
+console.log(hiScores);
 
 finalScore.innerText = mostRecentScore;
 
@@ -20,11 +20,11 @@ saveHighScore = (e) => {
         score: Math.floor(Math.random() * 100),
         name: username.value
     };
-    highScores.push(score);
-    highScores.sort( (a,b) => b.score - a.score)
-    highScores.splice(5);
+    hiScores.push(score);
+    hiScores.sort( (a,b) => b.score - a.score)
+    hiScores.splice(5);
 
-    localStorage.setItem("highScores", JSON.stringify(highScores));
+    localStorage.setItem("hiScores", JSON.stringify(hiScores));
     window.location.assign("hi-scores.html");
 
 };

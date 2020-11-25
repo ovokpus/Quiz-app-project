@@ -240,17 +240,17 @@ input::placeholder {
 }
 
 /* HI SCORES */
-#high-scores-list {
+#hi-scores-list {
     list-style: none;
     padding-left: 0;
     margin-bottom: 4rem;
 }
 
-.high-scores {
+.hi-scores {
     font-size: 2.8rem;
     margin-bottom: 0.5rem;
 }
 
-.high-scores:hover {
+.hi-scores:hover {
     transform: scale(1.05);
 }
