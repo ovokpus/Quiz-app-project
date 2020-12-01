@@ -30,11 +30,7 @@ fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=
 
             const answerChoices = [...loadedQuestion.incorrect_answers];
             formattedQuestions.answer = Math.floor(Math.random() * 3) + 1;
-            answerChoices.splice(
-                formattedQuestions.answer - 1,
-                0,
-                loadedQuestion.correct_answer
-            );
+            answerChoices.splice(formattedQuestions.answer - 1, 0, loadedQuestion.correct_answer);
 
             answerChoices.forEach((choice, index) => {
                 formattedQuestions['choice' + (index + 1)] = choice;
