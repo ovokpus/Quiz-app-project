@@ -1,0 +1,17 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Congrats!
+  | \
+  link(rel='stylesheet' href='css/app-style.css')
+.container
+  #end.flex-center.flex-column
+    h1#final-score
+    form
+      input#username(type='text' name='username' placeholder='username')
+      button#save-score-btn.btn(type='submit' onclick='saveHighScore(event)')
+        | Save
+    a.btn(href='./game') Play Again
+    a.btn(href='/') Go Home
+script(src='js/end.js')

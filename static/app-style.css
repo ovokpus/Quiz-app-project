@@ -1,0 +1,256 @@
+/*
+COLOR PALETTE
+https://coolors.co/f7fff7-343434-2f3061-ffe66d-a1c6d7
+#F7FFF7 - almost white
+#343434 - dark gray - almost black
+#2F3061 - blue dark
+#FFE66D - yellow
+#A1C6D7 - blue light
+#0B4F6C - blue sapphire
+#FFA69E - Melon
+*/
+
+:root {
+    background-color:#FFA69E;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+*{
+    box-sizing: inherit;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #343434;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 5rem;
+    color:black;
+    margin-bottom: 5rem;
+}
+
+h1 > span {
+    font-size: 2.4rem;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 2.8rem;
+    font-weight: 500;
+}
+
+/* UTILITIES */
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.container > * {
+    width: 70%;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* BUTTONS */
+.btn {
+    font-size: 2.0rem;
+    padding: 1.5rem 0;
+    border-radius: 0.5rem;
+    width: 20rem;
+    text-align:center;
+    border: 0.2rem solid #2f3061;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #2f3061;
+    background-color: #f7fff7;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: rgba(47, 48, 97, 50%);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* FORMS */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    margin-bottom: 1rem;
+    width: 20rem;
+    padding:1.5rem;
+    font-size: 1.8rem;
+    border: none;
+    box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+    text-align: center;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+.background-home {
+    background-image: url(images/thumbnail-2.jpg);
+    background-size: cover;
+    padding: 10rem;
+}
+
+.background-game {
+    background-image: url(images/joanna-kosinska-unsplash.jpg);
+    background-size: cover;
+    padding: 10rem;
+}
+
+/* GAME PROPER */
+.choice-container {
+    display: flex;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    text-align: center;
+    border: 0.25rem solid #2f3061;
+    font-size: 2rem;
+    padding: 1.5rem, 0;
+    color: #2f3061;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+.choice-container:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+
+.choice-prefix {
+    padding: 1.5rem 2.5rem;
+    background-color: #2f3061;
+    color:white;
+}
+
+.choice-text {
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.correct {
+    background-color:  #28a745;
+}
+
+.incorrect {
+    background-color: #dc3545;
+}
+
+/* HUD */
+
+#hud {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hud-prefix {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.hud-main-text {
+    text-align: center;
+}
+
+#progress-bar {
+    width: 50rem;
+    height: 3.9rem;
+    border : 0.25rem solid black;
+    margin-top: 2.5rem;
+    border-radius: 0.4rem;
+}
+
+#progress-bar-full {
+    height: 3.4rem;
+    background-color: #2f3061;
+    width: 0%;
+}
+/* LOADER */
+#loader {
+    border: 1.6rem solid white;
+    border-radius: 50%;
+    border-top: 1.6rem solid #56a5eb;
+    width: 12rem;
+    height: 12rem;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* HI SCORES */
+#hi-scores-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 4rem;
+}
+
+.hi-scores {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.hi-scores:hover {
+    transform: scale(1.05);
+}

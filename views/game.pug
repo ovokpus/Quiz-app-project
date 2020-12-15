@@ -1,0 +1,37 @@
+doctype html
+head
+  //- Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  //- Stylesheet
+  link(rel='stylesheet' href='css/app-style.css')
+  title Quick Quiz - Play
+.container.background-game
+  #loader
+  #game.justify-center.flex-column.hidden
+    #hud
+      #hud-item
+        p#progress-text.hud-prefix
+          | Question
+        #progress-bar
+          #progress-bar-full
+      #hud-item
+        p.hud-prefix
+          | Score
+        h1#score.hud-main-text
+          | 0
+    h2#question
+    //- Choice buttons
+    .choice-container
+      p.choice-prefix A
+      p.choice-text(data-number='1')
+    .choice-container
+      p.choice-prefix B
+      p.choice-text(data-number='2')
+    .choice-container
+      p.choice-prefix C
+      p.choice-text(data-number='3')
+    .choice-container
+      p.choice-prefix D
+      p.choice-text(data-number='4')
+script(src='/js/game.js')
