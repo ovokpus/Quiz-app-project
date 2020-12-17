@@ -17,5 +17,6 @@ module.exports = () => {
     router.get('/hi-scores', (request, response) => {
         response.render('hi-scores', {});
     });
+
     return router
 };

@@ -20,11 +20,11 @@ saveHighScore = (e) => {
         score: Math.floor(Math.random() * 100),
         name: username.value
     };
+
     hiScores.push(score);
     hiScores.sort((a, b) => b.score - a.score)
     hiScores.splice(5);
 
     localStorage.setItem("hiScores", JSON.stringify(hiScores));
     window.location.assign("/hi-scores");
-
 };

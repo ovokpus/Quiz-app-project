@@ -90,16 +90,16 @@ choices.forEach(choice => {
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
 
-        const CLASSTOAPPLY =
+        const classToApply =
             selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-        if (CLASSTOAPPLY === "correct") {
+        if (classToApply === "correct") {
             incrementScore(correctBonus);
         }
 
-        selectedChoice.parentElement.classList.add(CLASSTOAPPLY);
+        selectedChoice.parentElement.classList.add(classToApply);
         setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(CLASSTOAPPLY);
+            selectedChoice.parentElement.classList.remove(classToApply);
             getNewQuestion();
         }, 1000);
     });
